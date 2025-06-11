@@ -1,0 +1,3 @@
+libply_c: geometric features per point
+libcp: using geomtric features for partition
+libpp: parsing segment id and features

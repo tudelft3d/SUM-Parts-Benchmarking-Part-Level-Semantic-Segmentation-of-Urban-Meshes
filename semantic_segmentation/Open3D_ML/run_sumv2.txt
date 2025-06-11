@@ -1,0 +1,14 @@
+python3.8
+pip install open3d
+pip install -r requirements-torch-cuda.txt
+
+set environment variable:
+
+    OPEN3D_ML_ROOT /media/geo3d/software/my_code/MyOpen3D_ML
+
+    pip install plyfile
+
+python scripts/run_pipeline.py
+    torch -c ../ml3d/configs/randlanet_sumv2_triangle.yml --pipeline SemanticSegmentation --split train
+
+    torch -c ../ml3d/configs/randlanet_sumv2_triangle.yml --pipeline SemanticSegmentation --split test

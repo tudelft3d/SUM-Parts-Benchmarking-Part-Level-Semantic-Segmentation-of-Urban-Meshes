@@ -1,0 +1,43 @@
+Use pycharm with anaconda interpreter to install all libs, if libs cannot found, use annaconda prompt
+
+1.Problems of compile cut-pursit and ply_c
+intall boost_numpy seperately and compile it.
+namespace bpn = boost::python::numpy ->bpn = boost::numpy;
+namespace bp =  boost::python -> bp =  boost::python;
+Others see in CMakelist archive.
+Change .dll to .pyd copy to the .py path of partition
+
+2.dll unnable to import
+dumpbin.exe libcp.pyd /IMPORTS | grep dll
+dumpbin /dependents *.pyd
+make sure all dll in the conda env "superpoint_graph"
+missing "boost_python37-vc141-mt-gd-x64-1_69.dll", "boost_python37-vc141-mt-x64-1_69.dll"
+copy to "C:\ProgramData\Anaconda3\envs\superpoint_graph"
+
+3.Torch not with GPU
+activate superpoint_graph
+conda install -c pytorch torchvision cudatoolkit=10.1 pytorch
+
+4.Plyfile
+pip install plyfile
+pip install cupy
+pip install future
+
+5.python-igraph
+https://www.lfd.uci.edu/~gohlke/pythonlibs/#python-igraph
+pip install python_igraph-0.7.1.post6-cp37-cp37m-win_amd64.whl
+
+
+6.pynvrtc
+pip install pynvrtc
+open pynvrtc/interface.py, change 
+        if sizeof(c_void_p) == 8:
+            if system() == 'Windows':
+                def_lib_name = 'nvrtc64_92.dll'
+
+To:
+        if sizeof(c_void_p) == 8:
+            if system() == 'Windows':
+                def_lib_name = 'nvrtc64_101_0.dll'
+
+

@@ -1,0 +1,100 @@
+dataset:
+  name: sumv2_texture
+  cache_dir: ./logs/cache
+  dataset_path: ../data/sumv2_tex_texpcl  #../../data/sumv2_tex_demo # path/to/your/checkpoint
+  train_dir: train
+  val_dir: validate
+  test_dir: test
+  class_weights: [67961110,130844229,37949256,6019488,3981315,82676233,10825555,3314326,3802030,5237933,2423697,37318841,2509931,9653311,34967488,22183622,1091556,1164323,13009539]
+  ignored_label_inds:
+  - 0
+  num_classes: 19
+  num_points: 65536
+  test_files:
+    - Tile_+1984_+2688_texsp_pcl.ply
+    - Tile_+1989_+2689_texsp_pcl.ply
+    - Tile_+1990_+2691_texsp_pcl.ply
+    - Tile_+1985_+2690_texsp_pcl.ply
+    - Tile_+1989_+2692_texsp_pcl.ply
+    - Tile_+1991_+2693_texsp_pcl.ply
+    - Tile_+1986_+2689_texsp_pcl.ply
+    - Tile_+1990_+2688_texsp_pcl.ply
+  test_result_folder: ../data/sumv2_tex_texpcl/predict #../data/sumv2_tri_demo/predict
+  train_files:
+    - Tile_+1984_+2689_texsp_pcl.ply
+    - Tile_+1987_+2690_texsp_pcl.ply
+    - Tile_+1990_+2693_texsp_pcl.ply
+    - Tile_+1984_+2690_texsp_pcl.ply
+    - Tile_+1987_+2691_texsp_pcl.ply
+    - Tile_+1990_+2694_texsp_pcl.ply
+    - Tile_+1985_+2689_texsp_pcl.ply
+    - Tile_+1989_+2688_texsp_pcl.ply
+    - Tile_+1991_+2688_texsp_pcl.ply
+    - Tile_+1985_+2691_texsp_pcl.ply
+    - Tile_+1989_+2691_texsp_pcl.ply
+    - Tile_+1991_+2690_texsp_pcl.ply
+    - Tile_+1986_+2688_texsp_pcl.ply
+    - Tile_+1989_+2693_texsp_pcl.ply
+    - Tile_+1991_+2691_texsp_pcl.ply
+    - Tile_+1986_+2690_texsp_pcl.ply
+    - Tile_+1989_+2695_texsp_pcl.ply
+    - Tile_+1991_+2692_texsp_pcl.ply
+    - Tile_+1987_+2688_texsp_pcl.ply
+    - Tile_+1990_+2689_texsp_pcl.ply
+    - Tile_+1991_+2694_texsp_pcl.ply
+    - Tile_+1987_+2689_texsp_pcl.ply
+    - Tile_+1990_+2690_texsp_pcl.ply
+    - Tile_+1991_+2695_texsp_pcl.ply
+  use_cache: False #false #true
+  val_files:
+    - Tile_+1984_+2691_texsp_pcl.ply
+    - Tile_+1989_+2690_texsp_pcl.ply
+    - Tile_+1990_+2695_texsp_pcl.ply
+    - Tile_+1985_+2688_texsp_pcl.ply
+    - Tile_+1989_+2694_texsp_pcl.ply
+    - Tile_+1991_+2689_texsp_pcl.ply
+    - Tile_+1986_+2691_texsp_pcl.ply
+    - Tile_+1990_+2692_texsp_pcl.ply
+  steps_per_epoch_train: 100
+  steps_per_epoch_valid: 10
+model:
+  name: RandLANet
+  batcher: DefaultBatcher
+  is_resume: false #false
+  ckpt_path: logs/RandLANet_sumv2_texture_torch/checkpoint/ckpt_00200.pth # path/to/your/checkpoint
+  num_neighbors: 16
+  num_layers: 5
+  num_points: 65536
+  num_classes: 19
+  ignored_label_inds: [0]
+  sub_sampling_ratio: [4, 4, 4, 4, 2]
+  in_channels: 6
+  dim_features: 8
+  dim_output: [16, 64, 128, 256, 512]
+  grid_size: 0.01
+  augment:
+    recenter:
+      dim: [0, 1, 2]
+    normalize:
+      points:
+        method: linear
+pipeline:
+  name: SemanticSegmentation
+  optimizer:
+    lr: 0.001
+  batch_size: 4
+  num_workers: 0 #2
+  pin_memory: false #true
+  main_log_dir: ./logs
+  max_epoch: 200
+  save_ckpt_freq: 5
+  save_last_n_ckpt: 5
+  scheduler_gamma: 0.99
+  test_batch_size: 1
+  train_sum_dir: train_log
+  val_batch_size: 1
+  summary:
+    record_for: []
+    max_pts:
+    use_reference: false
+    max_outputs: 1

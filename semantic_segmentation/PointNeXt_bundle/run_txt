@@ -1,0 +1,5 @@
+
+--cfg ../../cfgs/sumv2_triangle/pointnet.yaml mode=train
+
+
+--cfg ../../cfgs/sumv2_triangle/pointvector-xl.yaml mode=test --pretrained_path log/sumv2_triangle/sumv2_triangle-train-pointvector-xl-ngpus1-20240321-213419-ikrjKxgU5ET5rWEHHFqfte/checkpoint/sumv2_triangle-train-pointvector-xl-ngpus1-20240321-213419-ikrjKxgU5ET5rWEHHFqfte_E99.pth

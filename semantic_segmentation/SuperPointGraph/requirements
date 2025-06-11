@@ -1,0 +1,45 @@
+conda install -c anaconda boost; conda install -c omnia eigen3; conda install eigen; conda install -c r libiconv
+
+pip install future python-igraph tqdm transforms3d pynvrtc fastrlock h5py plyfile scipy
+
+conda install pytorch==1.5.1 torchvision==0.6.1 cudatoolkit=10.2 -c pytorch
+
+pip install python_igraph-0.7.1.post6-cp37-cp37m-win_amd64.whl.whl
+
+pip install -U scikit-learn
+pip install pandas
+pip install progressbar2
+pip install torchnet
+pip install jgraph
+
+#cupy has save version as cudatoolkit in conda
+pip install cupy-cuda1xx
+
+pip install tensorboard
+
+#install boost 
+sudo apt-get update
+sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev
+sudo apt-get install libboost-all-dev libboost-doc libboost-dev
+
+#build with python3
+https://gist.github.com/ccj5351/d22cab90b2d4e9310a5025aeaf8fadc4 
+
+#build boost
+./bootstrap.sh --prefix=/usr/ --with-python=/home/dgeo/anaconda3/envs/spg/bin/python3.7
+./b2 --toolset=gcc-5 cflags='-fPIC' cxxflags='-fPIC' --with-python include="/home/dgeo/anaconda3/envs/spg/include/python3.7m"
+sudo ./b2 --toolset=gcc-5 --enable-unicode=ucs4 install
+
+#check version
+dpkg -s libboost-dev | grep 'Version'
+
+#remove boost
+#!/bin/bash
+sudo apt-get -y --purge remove libboost-all-dev libboost-doc libboost-dev
+echo "clear boost dir"
+sudo rm -r /usr/local/lib/libboost*
+sudo rm -r /usr/local/include/boost
+sudo rm -r /usr/local/lib/cmake/*
+sudo rm -r /usr/lib/libboost*
+sudo rm -r /usr/include/boost
+sudo rm -r /usr/lib/cmake/*
