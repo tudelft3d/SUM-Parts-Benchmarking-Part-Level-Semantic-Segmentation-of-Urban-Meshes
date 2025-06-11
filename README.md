@@ -106,7 +106,7 @@ property int label
 property int texnumber
 end_header
 ```
-Below are examples of texture mask images. From left to right are the original texture image, the texture image with semantic pixel labels, and the full-semantic texture image incorporating face semantic information.
+Below are examples of texture mask images. In order: the original texture image, the texture image with semantic pixel labels, and the full-semantic texture image incorporating face semantic information.
 <div style="display: flex; gap: 10px;">
   <img src="assets/Tile_+1984_+2689_0.jpg" alt="textuer" style="max-width: 30%;">
   <img src="assets/mask_Tile_+1984_+2689_0.png" alt="mask1" style="max-width: 30%;">
