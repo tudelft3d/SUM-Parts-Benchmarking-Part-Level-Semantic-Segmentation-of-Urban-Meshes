@@ -117,7 +117,7 @@ For users needing annotation services, we offer paid semantic annotation for tex
 If you use SUM Parts or SUM in a scientific work, please consider citing the following papers:
 
 <a href="https://arxiv.org/abs/2503.15300"><img class="image" align="left" width="190px" src="./assets/sumparts_thumbnail.png"></a>
-<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Gao_SUM_Parts_Benchmarking_Part-Level_Semantic_Segmentation_of_Urban_Meshes_CVPR_2025_paper.pdf">[paper]</a>&nbsp;&nbsp;<a href="https://openaccess.thecvf.com/content/CVPR2025/supplemental/Gao_SUM_Parts_Benchmarking_CVPR_2025_supplemental.pdf">[supplemental]</a>&nbsp;&nbsp;<a href="http://arxiv.org/abs/2503.15300">[arxiv]</a>&nbsp;&nbsp;<a href="./CITATION.bib">[bibtex]</a><br>
+<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Gao_SUM_Parts_Benchmarking_Part-Level_Semantic_Segmentation_of_Urban_Meshes_CVPR_2025_paper.pdf">[paper]</a>&nbsp;&nbsp;<a href="https://openaccess.thecvf.com/content/CVPR2025/supplemental/Gao_SUM_Parts_Benchmarking_CVPR_2025_supplemental.pdf">[supplemental]</a>&nbsp;&nbsp;<a href="http://arxiv.org/abs/2503.15300">[arxiv]</a>&nbsp;&nbsp;<a href=".assets/sum_parts.bib">[bibtex]</a><br>
 ```bibtex
 @InProceedings{Gao_2025_CVPR,
     author    = {Gao, Weixiao and Nan, Liangliang and Ledoux, Hugo},
@@ -130,7 +130,7 @@ If you use SUM Parts or SUM in a scientific work, please consider citing the fol
 ```
 #
 <a href="https://arxiv.org/abs/2103.00355"><img class="image" align="left" width="190px" src="./assets/sum_thumbnail.png"></a>
-<a href="https://doi.org/10.1016/j.isprsjprs.2021.07.008">[paper]</a>&nbsp;&nbsp;<a href="https://3d.bk.tudelft.nl/projects/meshannotation/">[project]</a>&nbsp;&nbsp;<a href="https://arxiv.org/abs/2103.00355">[arxiv]</a>&nbsp;&nbsp;<a href="./CITATION.bib">[bibtex]</a><br>
+<a href="https://doi.org/10.1016/j.isprsjprs.2021.07.008">[paper]</a>&nbsp;&nbsp;<a href="https://3d.bk.tudelft.nl/projects/meshannotation/">[project]</a>&nbsp;&nbsp;<a href="https://arxiv.org/abs/2103.00355">[arxiv]</a>&nbsp;&nbsp;<a href=".assets/sum.bib">[bibtex]</a><br>
 ```bibtex
 @article{Gao_2021_ISPRS,
     title = {SUM: A benchmark dataset of Semantic Urban Meshes},
