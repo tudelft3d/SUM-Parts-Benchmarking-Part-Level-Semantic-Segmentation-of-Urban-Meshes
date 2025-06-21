@@ -59,98 +59,26 @@ and sidewalk
 </p>
 
 ## 📊 Benchmark Datasets
-Our benchmark datasets include textured meshes and semantic point clouds sampled on mesh surfaces using different methods. The textured meshes are stored in ASCII ply files, while semantic point clouds are stored in binary ply files to save space.
-
-### Semantic textured meshes
-The semantic label types of textured meshes are defined in the ply header via `comment label` and `comment texlabel`, while face semantic labels are stored in the ply file as `property int label`. Texture labels are saved in semantic texture mask images named `mask_texturefilename.png` or `full_mask_texturefilename.png`, where the former includes only texture semantic information and the latter adds face semantic information converted to texture semantics. Different colors can be mapped to semantic categories based on header definitions. Below is a ply file header example:  
-
-```
-ply
-format ascii 1.0
-comment TextureFile Tile_+1991_+2695_0.jpg
-comment label 0 unclassified
-comment label 1 terrain
-comment label 2 high_vegetation
-comment label 3 facade_surface
-comment label 4 water
-comment label 5 car
-comment label 6 boat
-comment label 7 roof_surface
-comment label 8 chimney
-comment label 9 dormer
-comment label 10 balcony
-comment label 11 roof_installation
-comment label 12 wall
-comment texlabel 13 window 100 100 255
-comment texlabel 14 door 150 30 60
-comment texlabel 15 low_vegetation 200 255 0
-comment texlabel 16 impervious_surface 100 150 150
-comment texlabel 17 road 200 200 200
-comment texlabel 18 road_marking 150 100 150
-comment texlabel 19 cycle_lane 255 85 127
-comment texlabel 20 sidewalk 255 255 170
-element vertex 54890
-property float x
-property float y
-property float z
-element face 108322
-property list uchar int vertex_indices
-property list uchar float texcoord
-property float r
-property float g
-property float b
-property float nx
-property float ny
-property float nz
-property int label
-property int texnumber
-end_header
-```
-Below are examples of texture mask images. In order: the original texture image, the texture image with semantic pixel labels, and the full-semantic texture image incorporating face semantic information.
-<div style="display: flex; gap: 10px;">
-  <img src="assets/Tile_+1984_+2689_0.jpg" alt="textuer" style="max-width: 30%;">
-  <img src="assets/mask_Tile_+1984_+2689_0.png" alt="mask1" style="max-width: 30%;">
-  <img src="assets/full_mask_Tile_+1984_+2689_0.png" alt="mask2" style="max-width: 30%;">
-</div>
-
-### Semantic colored point clouds
-Our point clouds are sampled from mesh surfaces, containing semantic labels, texture colors, geometric positions, and normal vectors. We classify the sampled point clouds into two types: mesh face-sampled point clouds and texture pixel-sampled point clouds.  
-
-For face-sampled point clouds, we evaluated four mesh sampling strategies: face centroid, random, Poisson disk sampling, and our proposed superpixel texture sampling. For pixel labels, we tested three sampling methods: random, Poisson disk, and superpixel texture sampling. The number of random and Poisson disk samples depends on the superpixel texture sampling count, while face centroid sampling matches the number of mesh faces.  
-
-To enable bidirectional semantic information transfer between textured meshes and point clouds:  
-- Face centroids correspond to the semantic information of each mesh face.  
-- Random and Poisson disk sampling use KNN to find the nearest mesh or texture pixels, transferring semantics via a voting mechanism.  
-- Superpixel texture sampling maintains one-to-one correspondence with original texture pixels by preserving superpixel labels (texture pixels can compute their triangular face coordinates via texture coordinates).  
-
-A header example for binary ply point clouds:  
-```
-ply
-format binary_little_endian 1.0
-element vertex 362516
-property float x
-property float y
-property float z
-property float nx
-property float ny
-property float nz
-property float r
-property float g
-property float b
-property int label
-end_header
-```
+Our benchmark datasets include textured meshes and semantic point clouds sampled on mesh surfaces using different methods. The textured meshes are stored in ASCII ply files, while semantic point clouds are stored in binary ply files to save space. To **download** the dataset and view the corresponding instructions, please go to the [hugging face](https://huggingface.co/datasets/gwxgrxhyz/SUM-Parts) repository.
 
 ### Visualization
+#### Mapple
 For rendering semantic textured meshes, use the 'Coloring' function in the Surface module of [Mapple](https://github.com/LiangliangNan/Easy3D/releases/tag/v2.6.1):  
-- `f:color` displays mesh face colors.  
-- `scalar - f:label` shows legend colors for different semantic labels.  
-- `h:texcoord` displays texture colors, with corresponding texture images or semantic texture masks selectable via 'Texture'.
+- `f:color` or `v:color` displays per-face or per-point colors.
+- `scalar - f:label` or `scalar - v:label` shows legend colors for different semantic labels.  
+- `h:texcoord` displays mesh texture colors, with corresponding texture images or semantic texture masks selectable via the 'Texture' dropdown.
 
 <div style="max-width: 100%; overflow: hidden; text-align: center;">
 <img src="assets/mapple_ui.png" alt="Dataset Overview" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
 </div>
 
+
+#### MeshLab
+[MeshLab](https://www.meshlab.net/) can also visualize semantic textured meshes by displaying face colors or textures, but it **cannot process scalar values** (such as labels):  
+
+<div style="max-width: 100%; overflow: hidden; text-align: center;">
+<img src="assets/meshlab_ui.png" alt="Dataset Overview" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+</div>
 
 ## 🛠️ Code
 ### Semantic segmentation
