@@ -3,9 +3,9 @@
 **CVPR 2025**
 
 [![Website](https://img.shields.io/badge/%F0%9F%A4%8D%20Project%20-Website-blue)](https://tudelft3d.github.io/SUMParts/)
+[![Hugging Face Data](https://img.shields.io/badge/🤗%20Hugging%20Face%20-Data-yellow)](https://huggingface.co/datasets/gwxgrxhyz/SUM-Parts)
 [![YouTube Video](https://img.shields.io/badge/🎥%20YouTube%20-Video-red)](https://youtu.be/CUi1Hf_GSlQ?si=AvghBzWzSCtXCllk)
 [![arXiv](https://img.shields.io/badge/arXiv-PDF-b31b1b)](https://arxiv.org/abs/2503.15300)
-[![Hugging Face Data](https://img.shields.io/badge/🤗%20Hugging%20Face%20-Data-yellow)](https://huggingface.co/datasets/gwxgrxhyz/SUM-Parts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://raw.githubusercontent.com/parametric-completion/paco/main/LICENSE)
 
 -----
